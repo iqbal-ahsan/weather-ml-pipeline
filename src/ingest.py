@@ -19,8 +19,8 @@ def fetch_weather_data():
     params = {
         "latitude": 23.8103,
         "longitude": 90.4125,
-        "start_date": "2022-01-01",
-        "end_date": "2024-12-31",
+        "start_date": "2025-04-01",
+        "end_date": "2026-04-30",
         "daily": [
             "temperature_2m_max",
             "temperature_2m_min",
@@ -83,4 +83,4 @@ def run_ingestion():
 
 if __name__ == "__main__":
     run_ingestion()
-    
+
