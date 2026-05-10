@@ -36,6 +36,27 @@ services:
       - mongo
     restart: unless-stopped
 
+  airflow:
+    image: apache/airflow:2.8.1
+    container_name: airflow
+    user: "0:0"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./src:/opt/airflow/src
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
+      - PYTHONPATH=/opt/airflow/src
+      - _PIP_ADDITIONAL_REQUIREMENTS=pymongo requests pandas scikit-learn mlflow python-dotenv
+    command: bash -c "airflow db init && airflow users create --username admin --password admin --firstname Iqbal --lastname Ahsan --role Admin --email iqbalahsan4470@gmail.com && airflow webserver & airflow scheduler"
+    depends_on:
+      - mongo
+      - mlflow
+    restart: unless-stopped
+
 volumes:
   mongo_data:
   mlflow_data:
