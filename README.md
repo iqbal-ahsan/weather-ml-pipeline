@@ -227,10 +227,3 @@ View all experiments at: **http://localhost:5000**
 **Iqbal Ahsan**
 - 📧 iqbalahsan4470@gmail.com
 - 💼 [LinkedIn](https://linkedin.com/in/iqbal-ahsan)
-
-
----
-
-## 📄 License
-
-MIT License — feel free to use this project as a reference.
